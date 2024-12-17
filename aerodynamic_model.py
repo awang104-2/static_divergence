@@ -1,8 +1,6 @@
 import numpy as np
 from scipy.integrate import quad
 
-# Wing properties
-
 
 # Returns the lift, drag, and circulation distribution
 def get_lift_and_drag(b, V, alpha, rho, N, y, Lambda):

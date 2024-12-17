@@ -8,7 +8,7 @@ L = 10.0  # Wing length (m)
 EI = 1e4  # Bending stiffness (N*m^2)
 GJ = 5e3  # Torsional stiffness (N*m^2)
 m = 10.0  # Mass per unit length (kg/m)
-N = 5
+N = 100  # Number of basis functions
 
 # Example parameters for aerodynamic model
 b = 10  # Semi-span
@@ -16,11 +16,11 @@ V = 50  # Freestream velocity
 alpha = 5 * np.pi / 180  # Geometric angle of attack (radians)
 rho = 1.225  # Air density (kg/m^3)
 N_panels = 50  # Number of panels
-y = np.linspace(-b, b, N)  # Spanwise locations
+y = np.linspace(-b, b, N_panels)  # Spanwise locations
 Lambda = 0  # Sweep angle (radians)
 
 # Find the stiffness and lift, drag, and circulation distribution
-K_bending, K_torsion = get_K(N)
+K_bending, K_torsion = get_K(L, EI, GJ, m, N)
 lift, drag, gamma = get_lift_and_drag(b=b, V=V, alpha=alpha, rho=rho, N=N_panels, y=y, Lambda=Lambda)
 
 # Combine the stiffness matrices
